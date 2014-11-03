@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/passing_test_beckground" >
+          <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout 
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+	<TextView 
+	    android:id="@+id/tvQuestion_id"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="10dip"
+	    android:layout_marginBottom="10dip"
+	    android:layout_margin="10dip"
+	    android:textSize="20sp"/>
+	
+	<ListView 
+	    android:id="@+id/lvAnswers_id"
+	    android:layout_width="match_parent"
+	    android:layout_height="250dip"
+	    android:background="@color/passing_test_view_beckground"
+	    android:layout_margin="20dip"/>
+	
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_margin="10dip"
+	    android:orientation="horizontal">
+		<Button
+		    android:id="@+id/btnAcceptAnswer_id"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textSize="20sp"
+		    android:text="@string/textAccept"/>
+
+	</LinearLayout>
+	</LinearLayout>
+</ScrollView>
+</LinearLayout>
+

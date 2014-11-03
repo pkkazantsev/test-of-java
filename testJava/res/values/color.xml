@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="passing_test_beckground">#C0C0C0</color>
+    <color name="passing_test_view_beckground">#FFFFFF</color>
+    <color name="correct_answer_beckground">#8FBC8F</color>
+</resources>

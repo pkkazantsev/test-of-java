@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+
+    <RadioGroup 
+        android:id="@+id/radioGroup_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:layout_marginLeft="2dip"
+        android:orientation="vertical">
+        	<RadioButton
+				android:id="@+id/radioButton1_id"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="true"
+				android:onClick="onRadioButtonClicked"
+				android:text="Первый уровень сложности    "/>
+			<RadioButton
+				android:id="@+id/radioButton2_id"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:onClick="onRadioButtonClicked"
+				android:text="Второй уровень сложности    "/>
+			<RadioButton
+				android:id="@+id/radioButton3_id"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:onClick="onRadioButtonClicked"
+				android:text="Третий уровень сложности    "/>
+    </RadioGroup>
+
+    
+        <TextView 
+	        android:id="@+id/tvTextPointTest_id"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="80dip"
+	        android:layout_marginLeft="20dip"
+	        android:textSize="30sp"
+	        android:text="Количество набранных очков: "/>
+        <TextView 
+	        android:id="@+id/tvPointTest_id"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dip"
+			android:layout_gravity="center_horizontal"
+	        android:textSize="50sp"/>
+        
+        
+    <Button
+        android:id="@+id/btnGoTest_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dip"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/btnGoTest" />
+
+</LinearLayout>
