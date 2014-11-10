@@ -31,6 +31,9 @@
         <activity 
             android:name="ResultTest">
         </activity>
+        <activity 
+            android:name="ReadTheory">
+        </activity>
     </application>
 
 </manifest>

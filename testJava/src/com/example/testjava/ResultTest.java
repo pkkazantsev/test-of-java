@@ -38,12 +38,12 @@ public class ResultTest extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.btnViewTest_id:
 			Intent intent = getIntent();
-			dbTestJava = new DatabaseTestJava(this);
-			dbTestJava.openDataBase();
-			ContentValues cv = new ContentValues();
-			cv.put("points", intent.getIntExtra("result", 0) - 3);
-			dbTestJava.update(DB_TABLE_NAME, cv, "_id = " + 1, null);
-			dbTestJava.close();
+			//dbTestJava = new DatabaseTestJava(this);
+			//dbTestJava.openDataBase();
+			//ContentValues cv = new ContentValues();
+			//cv.put("points", intent.getIntExtra("result", 0) - 3);
+			//dbTestJava.update(DB_TABLE_NAME, cv, "_id = " + 1, null);
+			//dbTestJava.close();
 			finish();
 			break;
 

@@ -69,20 +69,34 @@ public class TabsTest extends FragmentActivity{
 		}
 		dbTestJava.openDataBase();
 		c = dbTestJava.query(DB_TABLE_NAME, null, null, null, null, null, null);
+		
         
         for(int i = 0; i < c.getCount(); i++)
         {
           randomNumbers.add(i);
         }
+
         Collections.shuffle(randomNumbers);
-        
         while (randomQuestions.size() != 10) {
         	c.moveToPosition(randomNumbers.get(curNumber));
-         	if (c.getInt(c.getColumnIndex("complexity")) == 1) {
-        		randomQuestions.add(curNumber);
+        	if (getIntent().getIntExtra("position", 0) == 1) {
+	         	if (c.getString(10).equals("Îáùèå âîïðîñû")) {
+	        		randomQuestions.add(c.getPosition());
+	        	}
+        	}
+        	if (getIntent().getIntExtra("position", 0) == 2) {
+	         	if (c.getString(10).equals("Ñèíòàêñèñ")) {
+	        		randomQuestions.add(c.getPosition());
+	        	}
+        	}
+        	if (getIntent().getIntExtra("position", 0) == 3) {
+	         	if (c.getString(10).equals("Îáúåêòû è êëàññû")) {
+	        		randomQuestions.add(c.getPosition());
+	        	}
         	}
            	curNumber++;
         }     
+        Log.d("TAG", String.valueOf(randomQuestions));
 
     }
     
@@ -117,6 +131,7 @@ public class TabsTest extends FragmentActivity{
     public class AnswerFragment extends Fragment {
     	private ListView lvAnswers;
     	private TextView tvQuestion;
+    	private TextView tvÑomplexity;
     	private Button btnAcceptAnswer;
     	private AnswerAdapter answerAdapter;
         ArrayList<String> answers;
@@ -130,11 +145,13 @@ public class TabsTest extends FragmentActivity{
             Bundle args = getArguments();    
     		lvAnswers = (ListView) rootView.findViewById(R.id.lvAnswers_id);
     		tvQuestion = (TextView) rootView.findViewById(R.id.tvQuestion_id);	
+    		tvÑomplexity = (TextView) rootView.findViewById(R.id.tvComplexity_id);
     		btnAcceptAnswer = (Button) rootView.findViewById(R.id.btnAcceptAnswer_id);
 
     	    c.moveToPosition(randomQuestions.get(args.getInt(ARG_OBJECT)));
     	    tvQuestion.setText(c.getString(c.getColumnIndex("question")));
-    	       	    
+    	    tvÑomplexity.setText("Ñëîæíîñòü " + c.getString(c.getColumnIndex("complexity")));
+    	    
     	    answers = new ArrayList<String>();
 
     	    for (int i = 0; i < 5; i++) {
@@ -164,10 +181,14 @@ public class TabsTest extends FragmentActivity{
 						dbTestJava.openDataBase();
 						Cursor c = dbTestJava.query(DB_TABLE_NAME, null, null, null, null, null, null);
 			    	    c.moveToPosition(args.getInt(ARG_OBJECT));
+			    	    Log.d("TAG", String.valueOf(args.getInt(ARG_OBJECT)));
 			    	    
 			    	    if (c.getString(c.getColumnIndex("singleAnswer")).toString().equals("true")) {
-				    	    if (String.valueOf(lvAnswers.getCheckedItemPosition())  + 1 == c.getString(c.getColumnIndex("correctAnswers"))) {
+			    	    	//Log.d("TAG", String.valueOf(lvAnswers.getCheckedItemPosition() + 1));
+			    	    	//Log.d("TAG", String.valueOf(c.getColumnIndex("correctAnswers")));
+				    	    if (String.valueOf(lvAnswers.getCheckedItemPosition()) == c.getString(c.getColumnIndex("correctAnswers"))) {
 				    	    	correct++;
+				    	    	Log.d("TAG", "true");
 				    	    }
 			    	    }
 			    	    else {
@@ -221,8 +242,8 @@ public class TabsTest extends FragmentActivity{
 		public void onActivityResult(int requestCode, int resultCode, Intent intent) {
     		super.onActivityResult(requestCode, resultCode, intent);
     		result = true;
-/*    		
-    	    if (correctAnswers.size() == 10) {
+    		
+/*    	    if (correctAnswers.size() == 10) {
     	    	Log.d("TAG2", String.valueOf(correctAnswers.size()));
     	    	lvAnswers.getChildAt(1).setBackgroundResource(R.color.correct_answer_beckground);
         		//lvAnswers.getChildAt(3).setBackgroundResource(R.color.correct_answer_beckground);
@@ -266,7 +287,7 @@ public class TabsTest extends FragmentActivity{
             }
 
             public void onFinish() {
-            	item.setTitle("done!");
+            	item.setTitle("Âðåìÿ âûøëî!");
             	finish();
             }
          }.start();

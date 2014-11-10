@@ -18,43 +18,29 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private Button btnGoTest;
+	private Button btnTheory;
 	private TextView tvPointsTest;
 	private DatabaseTestJava dbTestJava;
 	private static final String DB_TABLE_NAME = "pointsTable";
-	private RadioButton rbOneLvl;
-	private RadioButton rbTwoLvl;
-	private RadioButton rbThreeLvl;
+	private RadioButton rbOne;
+	private RadioButton rbTwo;
+	private RadioButton rbThree;
+	private RadioButton rbFour;
+	private RadioButton rbFive;
+	private TextView tvText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		btnGoTest = (Button) findViewById(R.id.btnGoTest_id);
-		tvPointsTest = (TextView) findViewById(R.id.tvPointTest_id);
-		rbOneLvl = (RadioButton) findViewById(R.id.radioButton1_id);
-		rbTwoLvl = (RadioButton) findViewById(R.id.radioButton2_id);
-		rbThreeLvl = (RadioButton) findViewById(R.id.radioButton3_id);
+		btnTheory = (Button) findViewById(R.id.btnTheory_id);
+		rbOne = (RadioButton) findViewById(R.id.radioButton1_id);
+		rbTwo = (RadioButton) findViewById(R.id.radioButton2_id);
+		rbThree = (RadioButton) findViewById(R.id.radioButton3_id);
+		tvText= (TextView) findViewById(R.id.tvText_id);
 		btnGoTest.setOnClickListener(this);
-		Intent intent = getIntent();
-		dbTestJava = new DatabaseTestJava(this);
-		
-		try {
-			dbTestJava.createDataBase();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		dbTestJava.openDataBase();
-		Cursor c = dbTestJava.query(DB_TABLE_NAME, null, null, null, null, null, null);
-		c.moveToPosition(0);
-		tvPointsTest.setText(String.valueOf(c.getInt(c.getColumnIndex("points"))));
-		dbTestJava.close();
-		c.close();
-		
-		if (intent.getIntExtra("points", 0) < 2) {
-			rbTwoLvl.setEnabled(false);
-			rbThreeLvl.setEnabled(false);
-		}
+		btnTheory.setOnClickListener(this);
 	}
 
 	@Override
@@ -67,21 +53,40 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnGoTest_id:
-			Intent intent = new Intent(this, TabsTest.class);
-			if (rbOneLvl.isChecked()) {
-				Log.d("TAG2", "1");
+			Intent intentTest = null;
+			if (rbOne.isChecked()) {
+				intentTest = new Intent(this, TabsTest.class);
+				intentTest.putExtra("position", 1);
 			}
-			if (rbTwoLvl.isChecked()) {
-				Log.d("TAG2", "2");
+			if (rbTwo.isChecked()) {
+				intentTest = new Intent(this, TabsTest.class);
+				intentTest.putExtra("position", 2);
 			}
-			if (rbThreeLvl.isChecked()) {
-				Log.d("TAG2", "3");
+			if (rbThree.isChecked()) {
+				intentTest = new Intent(this, TabsTest.class);
+				intentTest.putExtra("position", 3);
 			}
-			
-			startActivity(intent);
+			startActivity(intentTest);
 			finish();
 			break;
-
+		case R.id.btnTheory_id:
+			Intent intentTheory = null;
+			if (rbOne.isChecked()) {
+				intentTheory = new Intent(this, ReadTheory.class);
+				intentTheory.putExtra("position", 1);
+			}
+			
+			if (rbTwo.isChecked()) {
+				intentTheory = new Intent(this, ReadTheory.class);
+				intentTheory.putExtra("position", 2);
+			}
+			
+			if (rbThree.isChecked()) {
+				intentTheory = new Intent(this, ReadTheory.class);
+				intentTheory.putExtra("position", 3);
+			}
+			startActivity(intentTheory);
+			break;
 		default:
 			break;
 		}
@@ -93,20 +98,17 @@ public class MainActivity extends Activity implements OnClickListener {
 		switch (view.getId()) {
 		case R.id.radioButton1_id:
 			if (checked) {
-				/*rbTwoLvl.setChecked(false);
-				rbThreeLvl.setChecked(false);*/
+				tvText.setText("ѕосмотреть теорию или начать тест по теме:\n" + rbOne.getText());
 			}
 			break;
 		case R.id.radioButton2_id:
 			if (checked) {
-				//tvWhoOrWhom.setText(R.string.textTvWhom);
-				//radioButton1.setChecked(false);
+				tvText.setText("ѕосмотреть теорию или начать тест по теме:\n" + rbTwo.getText());
 			}
 			break;
 		case R.id.radioButton3_id:
 			if (checked) {
-				//tvWhoOrWhom.setText(R.string.textTvWhom);
-				//radioButton1.setChecked(false);
+				tvText.setText("ѕосмотреть теорию или начать тест по теме:\n" + rbThree.getText());
 			}
 			break;
 		default:

@@ -17,7 +17,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseTestJava extends SQLiteOpenHelper{
 	@SuppressLint("SdCardPath")
 	private static String DB_PATH = "/data/data/com.example.testjava/databases/";
-    private static String DB_NAME = "DBTestJavaPro";
+    private static String DB_NAME = "DBaseJava";
     private SQLiteDatabase myDataBase;
     private Context context;
     

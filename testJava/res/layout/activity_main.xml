@@ -3,7 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dip"
+        android:layout_marginTop="10dip"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/tvThemes"/>
 
     <RadioGroup 
         android:id="@+id/radioGroup_id"
@@ -18,45 +25,46 @@
 				android:layout_height="wrap_content"
 				android:checked="true"
 				android:onClick="onRadioButtonClicked"
-				android:text="Первый уровень сложности    "/>
+				android:text="@string/radioButton1"/>
 			<RadioButton
 				android:id="@+id/radioButton2_id"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:onClick="onRadioButtonClicked"
-				android:text="Второй уровень сложности    "/>
+				android:text="@string/radioButton2"/>
 			<RadioButton
 				android:id="@+id/radioButton3_id"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:onClick="onRadioButtonClicked"
-				android:text="Третий уровень сложности    "/>
+				android:text="@string/radioButton3"/>
     </RadioGroup>
-
-    
-        <TextView 
-	        android:id="@+id/tvTextPointTest_id"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="80dip"
-	        android:layout_marginLeft="20dip"
-	        android:textSize="30sp"
-	        android:text="Количество набранных очков: "/>
-        <TextView 
-	        android:id="@+id/tvPointTest_id"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="10dip"
-			android:layout_gravity="center_horizontal"
-	        android:textSize="50sp"/>
-        
-        
-    <Button
-        android:id="@+id/btnGoTest_id"
+    <TextView 
+	    android:id="@+id/tvText_id"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="40dip"
+	    android:layout_marginLeft="20dip"
+	    android:textSize="20sp"
+	    android:text="@string/textMainTv"/>
+    <LinearLayout 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dip"
         android:layout_gravity="center_horizontal"
-        android:text="@string/btnGoTest" />
+        android:orientation="horizontal">
+	    <Button
+	        android:id="@+id/btnTheory_id"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dip"
+	        android:text="@string/btnTheory" />
+	    <Button
+	        android:id="@+id/btnGoTest_id"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dip"
+	        android:text="@string/btnGoTest" />
+    </LinearLayout>
+
 
 </LinearLayout>
